@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3971DE9D175FAF2B00C9E4BF /* SneakyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3971DE96175FAF2B00C9E4BF /* SneakyButton.m */; };
+		3971DE9E175FAF2B00C9E4BF /* SneakyButtonSkinnedBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3971DE98175FAF2B00C9E4BF /* SneakyButtonSkinnedBase.m */; };
+		3971DE9F175FAF2B00C9E4BF /* SneakyJoystick.m in Sources */ = {isa = PBXBuildFile; fileRef = 3971DE9A175FAF2B00C9E4BF /* SneakyJoystick.m */; };
+		3971DEA0175FAF2B00C9E4BF /* SneakyJoystickSkinnedBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3971DE9C175FAF2B00C9E4BF /* SneakyJoystickSkinnedBase.m */; };
 		BCD42DFA1754D5A70073089D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD42DF91754D5A70073089D /* QuartzCore.framework */; };
 		BCD42DFC1754D5A70073089D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD42DFB1754D5A70073089D /* OpenGLES.framework */; };
 		BCD42DFE1754D5A70073089D /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD42DFD1754D5A70073089D /* OpenAL.framework */; };
@@ -136,6 +140,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3971DE95175FAF2B00C9E4BF /* SneakyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SneakyButton.h; sourceTree = "<group>"; };
+		3971DE96175FAF2B00C9E4BF /* SneakyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SneakyButton.m; sourceTree = "<group>"; };
+		3971DE97175FAF2B00C9E4BF /* SneakyButtonSkinnedBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SneakyButtonSkinnedBase.h; sourceTree = "<group>"; };
+		3971DE98175FAF2B00C9E4BF /* SneakyButtonSkinnedBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SneakyButtonSkinnedBase.m; sourceTree = "<group>"; };
+		3971DE99175FAF2B00C9E4BF /* SneakyJoystick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SneakyJoystick.h; sourceTree = "<group>"; };
+		3971DE9A175FAF2B00C9E4BF /* SneakyJoystick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SneakyJoystick.m; sourceTree = "<group>"; };
+		3971DE9B175FAF2B00C9E4BF /* SneakyJoystickSkinnedBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SneakyJoystickSkinnedBase.h; sourceTree = "<group>"; };
+		3971DE9C175FAF2B00C9E4BF /* SneakyJoystickSkinnedBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SneakyJoystickSkinnedBase.m; sourceTree = "<group>"; };
 		BCD42DF61754D5A70073089D /* Tank90.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tank90.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCD42DF91754D5A70073089D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BCD42DFB1754D5A70073089D /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -420,9 +432,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3971DE87175FAE3600C9E4BF /* 3rdpartlibs */ = {
+			isa = PBXGroup;
+			children = (
+				3971DE88175FAE4100C9E4BF /* SneakJoystick */,
+			);
+			name = 3rdpartlibs;
+			sourceTree = "<group>";
+		};
+		3971DE88175FAE4100C9E4BF /* SneakJoystick */ = {
+			isa = PBXGroup;
+			children = (
+				3971DE95175FAF2B00C9E4BF /* SneakyButton.h */,
+				3971DE96175FAF2B00C9E4BF /* SneakyButton.m */,
+				3971DE97175FAF2B00C9E4BF /* SneakyButtonSkinnedBase.h */,
+				3971DE98175FAF2B00C9E4BF /* SneakyButtonSkinnedBase.m */,
+				3971DE99175FAF2B00C9E4BF /* SneakyJoystick.h */,
+				3971DE9A175FAF2B00C9E4BF /* SneakyJoystick.m */,
+				3971DE9B175FAF2B00C9E4BF /* SneakyJoystickSkinnedBase.h */,
+				3971DE9C175FAF2B00C9E4BF /* SneakyJoystickSkinnedBase.m */,
+			);
+			name = SneakJoystick;
+			sourceTree = "<group>";
+		};
 		BCD42DED1754D5A70073089D = {
 			isa = PBXGroup;
 			children = (
+				3971DE87175FAE3600C9E4BF /* 3rdpartlibs */,
 				BCD42E0B1754D5A70073089D /* Tank90 */,
 				BCD42DF81754D5A70073089D /* Frameworks */,
 				BCD42DF71754D5A70073089D /* Products */,
@@ -1009,6 +1045,10 @@
 				BCD42F851754D5AB0073089D /* AppDelegate.m in Sources */,
 				BCD42F881754D5AB0073089D /* HelloWorldLayer.m in Sources */,
 				BCD42F8B1754D5AB0073089D /* IntroLayer.m in Sources */,
+				3971DE9D175FAF2B00C9E4BF /* SneakyButton.m in Sources */,
+				3971DE9E175FAF2B00C9E4BF /* SneakyButtonSkinnedBase.m in Sources */,
+				3971DE9F175FAF2B00C9E4BF /* SneakyJoystick.m in Sources */,
+				3971DEA0175FAF2B00C9E4BF /* SneakyJoystickSkinnedBase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1112,6 +1152,7 @@
 				BCD42F901754D5AB0073089D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
