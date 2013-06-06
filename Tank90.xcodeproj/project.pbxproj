@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		396EAF7F1760F294003F9EB1 /* tank.plist in Resources */ = {isa = PBXBuildFile; fileRef = 396EAF7D1760F294003F9EB1 /* tank.plist */; };
+		396EAF801760F294003F9EB1 /* tank.png in Resources */ = {isa = PBXBuildFile; fileRef = 396EAF7E1760F294003F9EB1 /* tank.png */; };
 		3971DE9D175FAF2B00C9E4BF /* SneakyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3971DE96175FAF2B00C9E4BF /* SneakyButton.m */; };
 		3971DE9E175FAF2B00C9E4BF /* SneakyButtonSkinnedBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3971DE98175FAF2B00C9E4BF /* SneakyButtonSkinnedBase.m */; };
 		3971DE9F175FAF2B00C9E4BF /* SneakyJoystick.m in Sources */ = {isa = PBXBuildFile; fileRef = 3971DE9A175FAF2B00C9E4BF /* SneakyJoystick.m */; };
@@ -140,6 +142,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		396EAF7D1760F294003F9EB1 /* tank.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = tank.plist; path = Resources/tank.plist; sourceTree = "<group>"; };
+		396EAF7E1760F294003F9EB1 /* tank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tank.png; path = Resources/tank.png; sourceTree = "<group>"; };
 		3971DE95175FAF2B00C9E4BF /* SneakyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SneakyButton.h; sourceTree = "<group>"; };
 		3971DE96175FAF2B00C9E4BF /* SneakyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SneakyButton.m; sourceTree = "<group>"; };
 		3971DE97175FAF2B00C9E4BF /* SneakyButtonSkinnedBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SneakyButtonSkinnedBase.h; sourceTree = "<group>"; };
@@ -508,6 +512,8 @@
 		BCD42E0C1754D5A70073089D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				396EAF7D1760F294003F9EB1 /* tank.plist */,
+				396EAF7E1760F294003F9EB1 /* tank.png */,
 				BCD42E0D1754D5A70073089D /* Default.png */,
 				BCD42E0F1754D5A70073089D /* Default-Landscape~ipad.png */,
 				BCD42E111754D5A70073089D /* fps_images.png */,
@@ -931,6 +937,8 @@
 				BCD42E221754D5A70073089D /* Icon@2x.png in Resources */,
 				BCD42E251754D5A70073089D /* iTunesArtwork in Resources */,
 				BCD42F631754D5AA0073089D /* ChangeLog in Resources */,
+				396EAF7F1760F294003F9EB1 /* tank.plist in Resources */,
+				396EAF801760F294003F9EB1 /* tank.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

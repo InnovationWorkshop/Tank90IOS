@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>frames</key>
+	<dict>
+		{% for sprite in sprites %}
+		<key>{{ sprite.name }}</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			{% for alias in sprite.aliases %}
+				<string>{{ alias.name }}</string>
+			{% /for %}
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{ sprite.sourceColorRect }}</string>
+			<key>spriteOffset</key>
+			<string>{{ sprite.offset }}</string>
+			<key>spriteSize</key>
+			<string>{{ sprite.size }}</string>
+			<key>spriteSourceSize</key>
+			<string>{{ sprite.sourceSize }}</string>
+			<key>spriteTrimmed</key>
+			{% if sprite.isTrimmed %}<true/>{% else %}<false/>{% /if %}
+			<key>textureRect</key>
+			<string>{{ sprite.textureRect }}</string>
+			<key>textureRotated</key>
+			{% if sprite.isRotated %}<true/>{% else %}<false/>{% /if %}
+		</dict>
+		{% /for %}
+	</dict>
+	<key>metadata</key>
+	<dict>
+		<key>version</key>
+		<string>{{ metadata.version }}</string>
+		<key>format</key>
+		<integer>3</integer>
+		<key>size</key>
+		<string>{{ metadata.size }}</string>
+		<key>name</key>
+		<string>{{ metadata.name }}</string>
+		<key>target</key>
+		<dict>
+			<key>name</key>
+			<string>{{ metadata.target.name }}</string>
+			<key>textureFileName</key>
+			<string>{{ metadata.target.textureFileName }}</string>
+			<key>textureFileExtension</key>
+			<string>{{ metadata.target.textureFileExtension }}</string>
+			<key>coordinatesFileName</key>
+			<string>{{ metadata.target.coordinatesFileName }}</string>
+			<key>coordinatesFileExtension</key>
+			<string>{{ metadata.target.coordinatesFileExtension }}</string>
+			<key>premultipliedAlpha</key>
+			{% if metadata.target.premultipliedAlpha %}<true/>{% else %}<false/>{% /if %}
+		</dict>
+	</dict>
+</dict>
+</plist>

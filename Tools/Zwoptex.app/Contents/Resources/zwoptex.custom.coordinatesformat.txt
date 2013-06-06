@@ -1,0 +1,129 @@
+===================================================================================================
+= README
+===================================================================================================
+
+Zwoptex uses a template engine created by Matt Gemmell to generate the 
+coordinates data file.
+
+This custom field is editable so you can implement a custom format if you 
+require. The template language is quite basic and easy to learn.
+
+See the sample at the bottom of this text.
+
+===================================================================================================
+= SPRITE VARIABLES
+===================================================================================================
+
+String - name - name of the sprite
+String - nameWithoutExtension - name of the sprite without any extension
+
+String - sourceSize - string representation of the sprite source size before trimming or rotation
+float - sourceSizeWidth - sourceSize width
+float - sourceSizeHeight - sourceSize height
+
+String - sourceColorRect - string representation of the sprite source color rect
+float - sourceColorRectX - sourceColorRect origin x
+float - sourceColorRectY - sourceColorRect origin y
+float - sourceColorRectWidth - sourceColorRect size width
+float - sourceColorRectHeight - sourceColorRect size height
+
+String - size - string representation of the sprite size with trimming but not rotation
+float - sizeWidth - size width
+float - sizeHeight - size height
+
+String - offset - string representation of the sprite offset
+float - offsetX - offset x
+float - offsetY - offset y
+
+BOOL - isTrimmed - whether or not the sprite was trimmed
+
+String - textureRect - string representation of the texture rect with trimming and rotation
+float - textureRectX - textureRect origin x
+float - textureRectY - textureRect origin y
+float - textureRectWidth - textureRect size width
+float - textureRectHeight - textureRect size height
+
+BOOL - isRotated - whether or not the sprite was rotated
+
+===================================================================================================
+= METADATA VARIABLES
+===================================================================================================
+
+String - version - string version of Zwoptex used to generate the coordinates
+String - size - string representation of the sprite sheet size
+float - sizeWidth - size width
+float - sizeHeight - size height
+String - name - string name of the document
+BOOL - premultipliedAlpha - whether or not the texture data has premultiplied alpha
+
+String - target.name - name of the publish target
+String - target.textureFileName - name of the texture file without extension
+String - target.textureFileExtension - extension of the texture file (IE: .pvr.ccz) includes first period
+String - target.coordinatesFileName - name of the coordinates file without extension
+String - target.coordinatesFileExtension - extension of the coordinates file (IE: .plist) includes first period
+BOOL - target.premultipliedAlpha - whether or not the texture data has premultiplied alpha
+
+===================================================================================================
+= SAMPLE
+===================================================================================================
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>frames</key>
+	<dict>
+		{% for sprite in sprites %}
+		<key>{{ sprite.name }}</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			{% for alias in sprite.aliases %}
+				<string>{{ alias.name }}</string>
+			{% /for %}
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{ sprite.sourceColorRect }}</string>
+			<key>spriteOffset</key>
+			<string>{{ sprite.offset }}</string>
+			<key>spriteSize</key>
+			<string>{{ sprite.size }}</string>
+			<key>spriteSourceSize</key>
+			<string>{{ sprite.sourceSize }}</string>
+			<key>spriteTrimmed</key>
+			{% if sprite.isTrimmed %}<true/>{% else %}<false/>{% /if %}
+			<key>textureRect</key>
+			<string>{{ sprite.textureRect }}</string>
+			<key>textureRotated</key>
+			{% if sprite.isRotated %}<true/>{% else %}<false/>{% /if %}
+		</dict>
+		{% /for %}
+	</dict>
+	<key>metadata</key>
+	<dict>
+		<key>version</key>
+		<string>{{ metadata.version }}</string>
+		<key>format</key>
+		<integer>3</integer>
+		<key>size</key>
+		<string>{{ metadata.size }}</string>
+		<key>name</key>
+		<string>{{ metadata.name }}</string>
+		<key>target</key>
+		<dict>
+			<key>name</key>
+			<string>{{ metadata.target.name }}</string>
+			<key>textureFileName</key>
+			<string>{{ metadata.target.textureFileName }}</string>
+			<key>textureFileExtension</key>
+			<string>{{ metadata.target.textureFileExtension }}</string>
+			<key>coordinatesFileName</key>
+			<string>{{ metadata.target.coordinatesFileName }}</string>
+			<key>coordinatesFileExtension</key>
+			<string>{{ metadata.target.coordinatesFileExtension }}</string>
+			<key>premultipliedAlpha</key>
+			{% if metadata.target.premultipliedAlpha %}<true/>{% else %}<false/>{% /if %}
+		</dict>
+	</dict>
+</dict>
+</plist>

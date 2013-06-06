@@ -10,6 +10,7 @@
 // Import the interfaces
 #import "HelloWorldLayer.h"
 
+
 // Needed to obtain the Navigation Controller
 #import "AppDelegate.h"
 
@@ -23,7 +24,8 @@
 {
 	// 'scene' is an autorelease object.
 	CCScene *scene = [CCScene node];
-	
+   
+   
 	// 'layer' is an autorelease object.
 	HelloWorldLayer *layer = [HelloWorldLayer node];
 	
@@ -40,70 +42,95 @@
 	// always call "super" init
 	// Apple recommends to re-assign "self" with the "super's" return value
 	if( (self=[super init]) ) {
-		
-		// create and initialize a Label
-		CCLabelTTF *label = [CCLabelTTF labelWithString:@"Hello World" fontName:@"Marker Felt" fontSize:64];
 
-		// ask director for the window size
-		CGSize size = [[CCDirector sharedDirector] winSize];
-	
-		// position the label on the center of the screen
-		label.position =  ccp( size.width /2 , size.height/2 );
-		
-		// add the label as a child to this Layer
-		[self addChild: label];
-		
-		
-		
-		//
-		// Leaderboards and Achievements
-		//
-		
-		// Default font size will be 28 points.
-		[CCMenuItemFont setFontSize:28];
-		
-		// Achievement Menu Item using blocks
-		CCMenuItem *itemAchievement = [CCMenuItemFont itemWithString:@"Achievements" block:^(id sender) {
-			
-			
-			GKAchievementViewController *achivementViewController = [[GKAchievementViewController alloc] init];
-			achivementViewController.achievementDelegate = self;
-			
-			AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
-			
-			[[app navController] presentModalViewController:achivementViewController animated:YES];
-			
-			[achivementViewController release];
-		}
-									   ];
+        // 获取纹理贴图集的2D贴图
+        CCSpriteFrameCache *frameCache = [CCSpriteFrameCache sharedSpriteFrameCache];
+        CCTexture2D* gameArtTexture = [[CCTextureCache sharedTextureCache] addImage:@"tank.png"];
+        [frameCache addSpriteFramesWithFile:@"tank.plist"];
+        float buttonRadius = 50;
+        CGSize screenSize = [[CCDirector sharedDirector] winSize];
 
-		// Leaderboard Menu Item using blocks
-		CCMenuItem *itemLeaderboard = [CCMenuItemFont itemWithString:@"Leaderboard" block:^(id sender) {
-			
-			
-			GKLeaderboardViewController *leaderboardViewController = [[GKLeaderboardViewController alloc] init];
-			leaderboardViewController.leaderboardDelegate = self;
-			
-			AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
-			
-			[[app navController] presentModalViewController:leaderboardViewController animated:YES];
-			
-			[leaderboardViewController release];
-		}
-									   ];
+        tankLeft = [[CCSprite alloc] initWithSpriteFrameName:@"tank_left.png"];
+        tankRight = [[CCSprite alloc] initWithSpriteFrameName:@"tank_right.png"];
+        tankUp = [[CCSprite alloc] initWithSpriteFrameName:@"tank_up.png"];
+        tankDown = [[CCSprite alloc] initWithSpriteFrameName:@"tank_down.png"];
 		
-		CCMenu *menu = [CCMenu menuWithItems:itemAchievement, itemLeaderboard, nil];
-		
-		[menu alignItemsHorizontallyWithPadding:20];
-		[menu setPosition:ccp( size.width/2, size.height/2 - 50)];
-		
-		// Add the menu to the layer
-		[self addChild:menu];
+        tankLeft.position = CGPointMake(screenSize.width *.5, screenSize.height *.5);
+        tankRight.position = CGPointMake(screenSize.width *.5, screenSize.height *.5);
+        tankUp.position = CGPointMake(screenSize.width *.5, screenSize.height *.5);
+        tankDown.position = CGPointMake(screenSize.width *.5, screenSize.height *.5);
+        
+        
+        btnFire = [[[SneakyButton alloc] init] autorelease];
+        btnFire.isHoldable = YES;
+        SneakyButtonSkinnedBase *btnSkinFire = [[SneakyButtonSkinnedBase alloc] init];
+        btnSkinFire.position = CGPointMake(screenSize.width - buttonRadius * 3, buttonRadius * 3);
+        btnSkinFire.defaultSprite = [CCSprite spriteWithSpriteFrameName:@"pad_center_normal.png"];
+        btnSkinFire.activatedSprite = [CCSprite spriteWithSpriteFrameName:@"pad_center_active.png"];
+        btnSkinFire.button = btnFire;
+        
+        float stickRadius = 50;
 
+        btnJoystick = [[SneakyJoystick alloc] initWithRect:CGRectMake(0, 0, stickRadius, stickRadius)];
+        btnJoystick.autoCenter = YES;
+        btnJoystick.hasDeadzone = YES;
+        btnJoystick.isDPad = YES;
+        btnJoystick.numberOfDirections = 4;
+        btnJoystick.deadRadius = 10;
+        SneakyJoystickSkinnedBase* skinStick = [[SneakyJoystickSkinnedBase alloc] init];
+        skinStick.position = CGPointMake(stickRadius*3, stickRadius*3);
+        skinStick.backgroundSprite = [CCSprite spriteWithSpriteFrameName:@"pad_margin_active.png"];
+        skinStick.backgroundSprite.color = ccMAGENTA;
+        skinStick.thumbSprite = [CCSprite spriteWithSpriteFrameName:@"pad_center_normal.png"];
+        skinStick.thumbSprite.scale = 1.0f;
+        skinStick.joystick = btnJoystick;
+        [self addChild:skinStick];
+        [self addChild:btnSkinFire];
+        [self addChild:tankLeft];
+        [self addChild:tankRight];
+        [self addChild:tankUp];
+        [self addChild:tankDown];
+        [self scheduleUpdate];
+        
+        
 	}
 	return self;
 }
-
+-(void)update:(ccTime)delta{
+    
+    CGPoint velocity = ccpMult(btnJoystick.velocity, 200);
+	if (velocity.x != 0 && velocity.y != 0)
+	{
+		tankLeft.position = CGPointMake(tankLeft.position.x + velocity.x * delta, tankLeft.position.y + velocity.y * delta);
+		tankRight.position = CGPointMake(tankLeft.position.x + velocity.x * delta, tankLeft.position.y + velocity.y * delta);
+		tankUp.position = CGPointMake(tankLeft.position.x + velocity.x * delta, tankLeft.position.y + velocity.y * delta);
+		tankDown.position = CGPointMake(tankLeft.position.x + velocity.x * delta, tankLeft.position.y + velocity.y * delta);
+        if (velocity.y > 0) {
+            tankUp.visible = YES;
+            tankDown.visible = NO;
+            tankLeft.visible = NO;
+            tankRight.visible = NO;
+        }
+        if (velocity.y < 0) {
+            tankUp.visible = NO;
+            tankDown.visible = YES;
+            tankLeft.visible = NO;
+            tankRight.visible = NO;
+        }
+        if (velocity.x > 0&&velocity.x > ABS(velocity.y)) {
+            tankUp.visible = NO;
+            tankDown.visible = NO;
+            tankLeft.visible = NO;
+            tankRight.visible = YES;
+        }
+        if (velocity.x < 0&&-velocity.x > ABS(velocity.y)) {
+            tankUp.visible = NO;
+            tankDown.visible = NO;
+            tankLeft.visible = YES;
+            tankRight.visible = NO;
+        }
+	}
+}
 // on "dealloc" you need to release all your retained objects
 - (void) dealloc
 {
