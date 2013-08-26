@@ -13,6 +13,11 @@
 		3971DE9E175FAF2B00C9E4BF /* SneakyButtonSkinnedBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3971DE98175FAF2B00C9E4BF /* SneakyButtonSkinnedBase.m */; };
 		3971DE9F175FAF2B00C9E4BF /* SneakyJoystick.m in Sources */ = {isa = PBXBuildFile; fileRef = 3971DE9A175FAF2B00C9E4BF /* SneakyJoystick.m */; };
 		3971DEA0175FAF2B00C9E4BF /* SneakyJoystickSkinnedBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3971DE9C175FAF2B00C9E4BF /* SneakyJoystickSkinnedBase.m */; };
+		BC7D958F17C6690B0056837C /* TileMapLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7D958E17C6690B0056837C /* TileMapLayer.m */; };
+		BC7D959417C669CC0056837C /* stage1.tmx in Resources */ = {isa = PBXBuildFile; fileRef = BC7D959017C669CB0056837C /* stage1.tmx */; };
+		BC7D959517C669CC0056837C /* tile.zwd in Resources */ = {isa = PBXBuildFile; fileRef = BC7D959117C669CB0056837C /* tile.zwd */; };
+		BC7D959617C669CC0056837C /* tile_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = BC7D959217C669CC0056837C /* tile_default.plist */; };
+		BC7D959717C669CC0056837C /* tile_default.png in Resources */ = {isa = PBXBuildFile; fileRef = BC7D959317C669CC0056837C /* tile_default.png */; };
 		BCD42DFA1754D5A70073089D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD42DF91754D5A70073089D /* QuartzCore.framework */; };
 		BCD42DFC1754D5A70073089D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD42DFB1754D5A70073089D /* OpenGLES.framework */; };
 		BCD42DFE1754D5A70073089D /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD42DFD1754D5A70073089D /* OpenAL.framework */; };
@@ -152,6 +157,12 @@
 		3971DE9A175FAF2B00C9E4BF /* SneakyJoystick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SneakyJoystick.m; sourceTree = "<group>"; };
 		3971DE9B175FAF2B00C9E4BF /* SneakyJoystickSkinnedBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SneakyJoystickSkinnedBase.h; sourceTree = "<group>"; };
 		3971DE9C175FAF2B00C9E4BF /* SneakyJoystickSkinnedBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SneakyJoystickSkinnedBase.m; sourceTree = "<group>"; };
+		BC7D958D17C6690A0056837C /* TileMapLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileMapLayer.h; sourceTree = "<group>"; };
+		BC7D958E17C6690B0056837C /* TileMapLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TileMapLayer.m; sourceTree = "<group>"; };
+		BC7D959017C669CB0056837C /* stage1.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = stage1.tmx; path = resource/Images/stage1.tmx; sourceTree = SOURCE_ROOT; };
+		BC7D959117C669CB0056837C /* tile.zwd */ = {isa = PBXFileReference; lastKnownFileType = file; name = tile.zwd; path = resource/Images/tile.zwd; sourceTree = SOURCE_ROOT; };
+		BC7D959217C669CC0056837C /* tile_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = tile_default.plist; path = resource/Images/tile_default.plist; sourceTree = SOURCE_ROOT; };
+		BC7D959317C669CC0056837C /* tile_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tile_default.png; path = resource/Images/tile_default.png; sourceTree = SOURCE_ROOT; };
 		BCD42DF61754D5A70073089D /* Tank90.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tank90.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCD42DF91754D5A70073089D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BCD42DFB1754D5A70073089D /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -502,6 +513,8 @@
 				BCD42F871754D5AB0073089D /* HelloWorldLayer.m */,
 				BCD42F891754D5AB0073089D /* IntroLayer.h */,
 				BCD42F8A1754D5AB0073089D /* IntroLayer.m */,
+				BC7D958D17C6690A0056837C /* TileMapLayer.h */,
+				BC7D958E17C6690B0056837C /* TileMapLayer.m */,
 				BCD42E0C1754D5A70073089D /* Resources */,
 				BCD42E261754D5A70073089D /* libs */,
 				BCD42F7F1754D5AB0073089D /* Supporting Files */,
@@ -512,6 +525,10 @@
 		BCD42E0C1754D5A70073089D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BC7D959017C669CB0056837C /* stage1.tmx */,
+				BC7D959117C669CB0056837C /* tile.zwd */,
+				BC7D959217C669CC0056837C /* tile_default.plist */,
+				BC7D959317C669CC0056837C /* tile_default.png */,
 				396EAF7D1760F294003F9EB1 /* tank.plist */,
 				396EAF7E1760F294003F9EB1 /* tank.png */,
 				BCD42E0D1754D5A70073089D /* Default.png */,
@@ -939,6 +956,10 @@
 				BCD42F631754D5AA0073089D /* ChangeLog in Resources */,
 				396EAF7F1760F294003F9EB1 /* tank.plist in Resources */,
 				396EAF801760F294003F9EB1 /* tank.png in Resources */,
+				BC7D959417C669CC0056837C /* stage1.tmx in Resources */,
+				BC7D959517C669CC0056837C /* tile.zwd in Resources */,
+				BC7D959617C669CC0056837C /* tile_default.plist in Resources */,
+				BC7D959717C669CC0056837C /* tile_default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1057,6 +1078,7 @@
 				3971DE9E175FAF2B00C9E4BF /* SneakyButtonSkinnedBase.m in Sources */,
 				3971DE9F175FAF2B00C9E4BF /* SneakyJoystick.m in Sources */,
 				3971DEA0175FAF2B00C9E4BF /* SneakyJoystickSkinnedBase.m in Sources */,
+				BC7D958F17C6690B0056837C /* TileMapLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
